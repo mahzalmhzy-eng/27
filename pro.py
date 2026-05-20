@@ -148,8 +148,8 @@ def hh():
         v4 = ''.join(random.choice('aqswedrftgyhujikopzxcvbnm')for i in range(1))
         v5= ''.join(random.choice('1234567890')for i in range(1))
         v6= ''.join(random.choice('1234567890')for i in range(1))
-        user1 = v1+v2+v3+v4+v5+v6+v2
-        user2 = v1+v2+v3+v4+v5+v6+v2
+        user1 = v1+v1+'.'+v2+v3
+        user2 = v1+v1+'.'+v2+v3
         usse= [user1,user2]
         user= random.choice(usse)
  
