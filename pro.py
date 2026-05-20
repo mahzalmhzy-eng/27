@@ -125,7 +125,7 @@ def hh():
         {F}USER True : {Ca}[{true}]{E}USER False : {Ca}[{false}]
                 {z}RUN VPN : {F}[False]''')
 threads = []
-for i in range(10):  
+for i in range(30):  
     t = threading.Thread(target=hh)
     threads.append(t)
     t.start()
