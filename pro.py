@@ -216,7 +216,7 @@ def hh():
 ​╚═════ ≪ °❈° ≫ ═════╝
   
         {F}تم الصيد : {Ca}[{true}]{E}يوزر مستخدم : {Ca}[{false}]
-                {z}محظور لو لا : {E}[False]''')
+                {z}محظور لو لا : {F}[False]''')
 threads = []
 for i in range(30):  
     t = threading.Thread(target=hh)
