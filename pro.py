@@ -1,13 +1,3 @@
-#import os
-#os.system('pip install OneClick')
-#os.system('pip install stdiomask')
-#os.system('pip install requests')
-#os.system('pip install random')
-#os.system('pip install threading ')
-#os.system('pip install time')
-#os.system ("pip install uuid ")
-#os.system ("pip install user_agent")
-#os.system ("pip install bs4")()
 import requests
 import uuid
 from uuid import uuid1,uuid4
@@ -123,7 +113,7 @@ def hh():
   
         {F}USER True : {Ca}[{true}]{E}USER False : {Ca}[{false}]
                 {z}RUN VPN : {E}[True]''')
-            exit()
+            
         else:
             
             os.system('cls'if os.name=='nt'else'clear')
