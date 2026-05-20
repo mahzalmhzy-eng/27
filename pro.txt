@@ -1,136 +1,143 @@
-import telebot
-from telebot import types
-import instaloader
-import os
+#import os
+#os.system('pip install OneClick')
+#os.system('pip install stdiomask')
+#os.system('pip install requests')
+#os.system('pip install random')
+#os.system('pip install threading ')
+#os.system('pip install time')
+#os.system ("pip install uuid ")
+#os.system ("pip install user_agent")
+#os.system ("pip install bs4")()
+import requests
+import uuid
+from uuid import uuid1,uuid4
+from OneClick import Hunter
+import stdiomask
+import time,os,random
+import threading
+from user_agent import generate_user_agent
+print(('\033[94m' + '╔' + '═' * 38 + '╗') + 
+      '\n\033[92m  • DeCoDe By DEMO •\n\033[93m  | @shlhom • | @shlhom  ' + 
+      '\n\033[94m' + '╚' + '═' * 38 + '╝')
+uid=str(uuid.uuid4())
+true=0
+false=0
+chk=0
+error=0
+Ca = "\033[1;97m" #ابيض
+F = '\033[2;32m'  # أخضر
 
-# --- الإعدادات ---
-BOT_TOKEN = '8669879013:AAFTy2o0RCiCu8PmuYxds3tpuO64fzz2odg'
-CHANNEL_USERNAME = 'viokill' 
-ADMIN_ID = 7895099583  
+B = '\x1b[38;5;208m'  # برتقالي
+E = '\033[1;31m'  # أحمر
+Z = '\033[1;31m' #احمر
+X = '\033[1;33m' #اصفر
+F = '\033[2;32m' #اخضر
+Ca = "\033[1;97m" #ابيض
+B = '\033[2;36m'#سمائي
+Y = '\033[1;34m' #ازرق فاتح.
 
-bot = telebot.TeleBot(BOT_TOKEN)
-L = instaloader.Instaloader()
+y = '\033[1;35m'#وردي
+f = '\033[2;35m'#بنفسجي
+z = '\x1b[38;5;208m'
+logo=F+ '''
 
-USERS_FILE = 'uosers.txt'
-
-if not os.path.exists(USERS_FILE):
-    with open(USERS_FILE, 'w') as f:
-        pass
-
-INSTA_COOKIES = {
-    "datr": "hNHwabl5mvNXmedNbsSO0x1e",
-    "ig_did": "09329EE5-7CFF-4607-A9AE-9D85BCBD4E58",
-    "mid": "afDRhAABAAFF7zF9sdaNf1tnYxra",
-    "ds_user_id": "75576310325",
-    "csrftoken": "p6VTYfrcytKEdAnwhAuG3tekKflfblVF",
-    "sessionid": "75576310325%3AmwMQMsiAytuzOF%3A6%3AAYjIB7dWfbeR7fb5GddglU9VP3sSmqw0MUCnjf7PCw",
-    "dpr": "2.75"
-}
-
-def load_cookies():
-    try:
-        for name, value in INSTA_COOKIES.items():
-            L.context._session.cookies.set(name, value, domain='.instagram.com')
-        print("✅ تم تحميل الكوكيز بنجاح!")
-    except Exception as e:
-        print(f"❌ خطأ في تحميل الكوكيز: {e}")
-
-load_cookies()
-
-def check_sub(user_id):
-    try:
-        status = bot.get_chat_member(f"@{CHANNEL_USERNAME}", user_id).status
-        return status in ['member', 'administrator', 'creator']
-    except:
-        return True
-
-def sub_markup():
-    markup = types.InlineKeyboardMarkup()
-    btn = types.InlineKeyboardButton("انقر هنا للاشتراك", url=f"https://t.me/{CHANNEL_USERNAME}", style="primary")
-    markup.add(btn)
-    return markup
-
-def main_markup():
-    markup = types.InlineKeyboardMarkup()
-    markup.row(types.InlineKeyboardButton("القناة الرسمية", url=f"https://t.me/{CHANNEL_USERNAME}", style="success"))
-    markup.row(types.InlineKeyboardButton("المطور", url="https://t.me/iifffr", style="danger"))
-    return markup
-
-def save_user(user_id):
-    with open(USERS_FILE, 'r') as f:
-        users = f.read().splitlines()
-    if str(user_id) not in users:
-        with open(USERS_FILE, 'a') as f:
-            f.write(f"{user_id}\n")
-        return True
-    return False
-
-@bot.message_handler(commands=['start'])
-def start(message):
-    user_id = message.from_user.id
-    first_name = message.from_user.first_name
-    username = f"@{message.from_user.username}" if message.from_user.username else "لا يوجد"
-
-    is_new = save_user(user_id)
-
-    if is_new:
-        try:
-            admin_alert = (
-                f"<b>👤 مستخدم جديد انضم للبوت:</b>\n\n"
-                f"<b>• الاسم:</b> {first_name}\n"
-                f"<b>• الآيدي:</b> <code>{user_id}</code>\n"
-                f"<b>• اليوزر:</b> {username}"
-            )
-            bot.send_message(ADMIN_ID, admin_alert, parse_mode="HTML")
-        except:
-            pass
-
-    if not check_sub(user_id):
-        return bot.send_message(message.chat.id, "<b>عذراً عزيزي، عليك الاشتراك في القناة أولاً.</b>", 
-                                parse_mode="HTML", reply_markup=sub_markup())
+██╗░░██╗░██████╗░█████╗░
+██║░░██║██╔════╝██╔══██╗
+███████║╚█████╗░██║░░██║
+██╔══██║░╚═══██╗██║░░██║
+██║░░██║██████╔╝╚█████╔╝
+╚═╝░░╚═╝╚═════╝░░╚════╝░
+'''
+id= input(F+'ID : '+Ca)
+tok= input(F+'Token : '+Ca)
+def hh():
+    uk= [Z,X,F,f]
+    global true,false,chk,error,uid,logo
     
-    welcome_msg = "<b>مرحباً بك في مُحمل إنستقرام الذكي ⤶</b>\n\nارسـل رابط المنشور لاستخراجه.\n\n───"
-    bot.send_message(message.chat.id, welcome_msg, parse_mode="HTML", reply_markup=main_markup())
+    while True:
+        col= random.choice(uk)
+        col1= random.choice(uk)
+        col2= random.choice(uk)
+        print(('\033[94m' + '╔' + '═' * 38 + '╗') + 
+      '\n\033[92m  • تخمط نا&ج امك •\n\033[93m  | @shlhom • | @shlhom  ' + 
+      '\n\033[94m' + '╚' + '═' * 38 + '╝')
+        th = time.ctime()
+        v1= ''.join(random.choice('aqswedrftgyhujikopzxcvbnm')for i in range(1))
+        v2 =''.join(random.choice('aqswedrftgyhujikopzxcvbnm')for i in range(1))
+        v3= ''.join(random.choice('aqswedrftgyhujikopzxcvbnm')for i in range(1))
+        v4 = ''.join(random.choice('aqswedrftgyhujikopzxcvbnm')for i in range(1))
+        v5= ''.join(random.choice('1234567890')for i in range(1))
+        v6= ''.join(random.choice('1234567890')for i in range(1))
+        user1 = v1+v1+v2+v2+v3
+        user2 = v1+v1+v2+v2+v3
+        usse= [user1,user2]
+        user= random.choice(usse)
+ 
+        url='https://i.instagram.com/api/v1/accounts/create/'
+        hea={
+            'Host': 'i.instagram.com',
+            'cookie': 'mid=Y16iBgABAAFggfUYwajggkGFz-hs',
+            'x-ig-capabilities': 'AQ==',
+            'cookie2': '$Version=1',
+            'x-ig-connection-type': 'WIFI',
+            'user-agent': Hunter.Services(),
+            'content-type': 'application/x-www-form-urlencoded',
+            'content-length': '159',
 
-@bot.message_handler(func=lambda message: 'instagram.com' in message.text)
-def handle_insta(message):
-    if not check_sub(message.from_user.id):
-        return bot.send_message(message.chat.id, "<b>يجب عليك الاشتراك في القناة أولاً.</b>", 
-                                parse_mode="HTML", reply_markup=sub_markup())
+        }
+        data={
+            'password':'qqwwaassddffgghh4455',
+            'device_id':uid,
+            'guid':uid,
+            'email':'ll9678785@gmail.com',
+            'username':user,
+        }
+        res=requests.post(url,headers=hea,data=data,proxies=None).text
+        #print(res);exit()
 
-    status_msg = bot.reply_to(message, "<i>جاري معالجة الطلب.. 📨</i>", parse_mode="HTML")
-    url = message.text.split('?')[0]
-    
-    try:
-        shortcode = url.split("/")[-2]
-        post = instaloader.Post.from_shortcode(L.context, shortcode)
         
+        if '{"account_created": false, "errors": {"email": ["Another account is using the same email."]}, "status": "ok", "error_type": "email_is_taken"}'in res:
+            os.system('cls'if os.name=='nt'else'clear')
+            true+=1
+            chk+=1
+            print(f'''{col}{logo}
+                {col}<<{col1}TO-{col2}IN-{col}US-{col1}V1>>
+  
+        {F}USER True : {Ca}[{true}]{E}USER False : {Ca}[{false}]
+                {z}RUN VPN : {F}[False]''')
+            hit = f'''
+
+☆ HI NEW HIT 
+☆UserName : {user}
+☆BY : @shlhom
+
+'''
+            requests.post(f'https://api.telegram.org/bot{tok}/sendMessage?chat_id={id}&text={hit}')
         
-        caption_text = post.caption if post.caption else ""
-        media_group = []
-        
-        if post.typename == 'GraphSidecar':
-            for i, nodes in enumerate(post.get_sidecar_nodes()):
-               
-                current_caption = caption_text if i == 0 else ""
-                if nodes.is_video:
-                    media_group.append(types.InputMediaVideo(nodes.video_url, caption=current_caption))
-                else:
-                    media_group.append(types.InputMediaPhoto(nodes.display_url, caption=current_caption))
+        elif 'Please wait a few minutes before you try again.'in res:
+            os.system('cls'if os.name=='nt'else'clear')
+            error+=1
+            chk+=1
+            print(f'''{col}{logo}
+                {col}<<{col1}TO-{col2}IN-{col}US-{col1}V1>>
+  
+        {F}USER True : {Ca}[{true}]{E}USER False : {Ca}[{false}]
+                {z}RUN VPN : {E}[True]''')
+            exit()
         else:
-            if post.is_video:
-                media_group.append(types.InputMediaVideo(post.video_url, caption=caption_text))
-            else:
-                media_group.append(types.InputMediaPhoto(post.url, caption=caption_text))
-
-        if media_group:
-            bot.send_media_group(message.chat.id, media_group)
-            bot.delete_message(message.chat.id, status_msg.message_id)
             
-    except Exception as e:
-        print(f"Error detail: {e}")
-        bot.edit_message_text("<b>عذراً، فشل التحميل. قد يكون الحساب خاصاً أو هناك مشكلة في الاتصال.</b>", 
-                              message.chat.id, status_msg.message_id, parse_mode="HTML")
-
-bot.polling()
-
+            os.system('cls'if os.name=='nt'else'clear')
+            chk+=1
+            false+=1
+            print(f'''{col}{logo}
+                {col}<<{col1}TO-{col2}IN-{col}US-{col1}V1>>
+  
+        {F}USER True : {Ca}[{true}]{E}USER False : {Ca}[{false}]
+                {z}RUN VPN : {F}[False]''')
+threads = []
+for i in range(10):  
+    t = threading.Thread(target=hh)
+    threads.append(t)
+    t.start()
+for t in threads:
+    t.join()
