@@ -5,7 +5,12 @@ from OneClick import Hunter
 import stdiomask
 import time,os,random
 import threading
+import os
 from user_agent import generate_user_agent
+os.system('pip install requests')
+os.system('pip install OneClick')
+os.system('pip install user_agent')
+os.system('pip install stdiomask')
 print(('\033[94m' + '╔' + '═' * 38 + '╗') + 
       '\n\033[92m  • DeCoDe By DEMO •\n\033[93m  | @shlhom • | @shlhom  ' + 
       '\n\033[94m' + '╚' + '═' * 38 + '╝')
