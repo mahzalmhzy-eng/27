@@ -1,24 +1,47 @@
+import datetime
+import urllib.request
+
+def get_current_date():
+    try:
+        
+        response = urllib.request.urlopen('http://just-the-time.appspot.com', timeout=3)
+        result = response.read().strip().decode('utf-8')
+        
+        date_str = result.split()[0] 
+        return datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
+    except Exception:
+       
+   
+        return datetime.date.today()
+
+expiry_date = datetime.date(2026, 6, 1)
+
+
+current_date = get_current_date()
+
+if current_date > expiry_date:
+    print("-" * 0)
+    print(f" لقد انتهت صلاحية الاداة")
+    print("راسل المطور لتجديد الاداة")
+    print("@iifffr")
+    print("-" * 0)
+    exit() 
+else:
+    print("-" * 0)
+    
+    
+
 import requests
 import uuid
 from uuid import uuid1,uuid4
 from OneClick import Hunter
 import stdiomask
-import time,os,random
 import threading
 import os
-from user_agent import generate_user_agent
-os.system('pip install requests')
-os.system('pip install OneClick')
-os.system('pip install user_agent')
-os.system('pip install stdiomask')
-print(('\033[94m' + '╔' + '═' * 38 + '╗') + 
-      '\n\033[92m  • DeCoDe By DEMO •\n\033[93m  | @shlhom • | @shlhom  ' + 
-      '\n\033[94m' + '╚' + '═' * 38 + '╝')
-uid=str(uuid.uuid4())
-true=0
-false=0
-chk=0
-error=0
+from user_agent import generate_user_agent as elia
+import time,os,random
+
+
 Ca = "\033[1;97m" #ابيض
 F = '\033[2;32m'  # أخضر
 
@@ -34,17 +57,81 @@ Y = '\033[1;34m' #ازرق فاتح.
 y = '\033[1;35m'#وردي
 f = '\033[2;35m'#بنفسجي
 z = '\x1b[38;5;208m'
-logo=F+ '''
 
-██╗░░██╗░██████╗░█████╗░
-██║░░██║██╔════╝██╔══██╗
-███████║╚█████╗░██║░░██║
-██╔══██║░╚═══██╗██║░░██║
-██║░░██║██████╔╝╚█████╔╝
-╚═╝░░╚═╝╚═════╝░░╚════╝░
+def show_logo():
+   
+    os.system('cls' if os.name == 'nt' else 'clear')
+    
+    
+    logo_alasfar = B + """
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+ █████╗ ██╗      █████╗ ███████╗███████╗ █████╗ ██████╗ 
+██╔══██╗██║     ██╔══██╗██╔════╝██╔════╝██╔══██╗██╔══██╗
+███████║██║     ███████║███████╗█████╗  ███████║██████╔╝
+██╔══██║██║     ██╔══██║╚════██║██╔══╝  ██╔══██║██╔══██╗
+██║  ██║███████╗██║  ██║███████║██║     ██║  ██║██║  ██║
+╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝
+"""
+                       
+    logoso = z + """
+ ██████╗██╗      █████╗ ███████╗███████╗                
+██╔════╝██║     ██╔══██╗██╔════╝██╔════╝                
+██║     ██║     ███████║███████╗███████╗                
+██║     ██║     ██╔══██║╚════██║╚════██║                
+╚██████╗███████╗██║  ██║███████║███████║                
+ ╚═════╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝                
+"""
+    print(logo_alasfar)
+    print(logoso)
+
+if __name__ == "__main__":
+    show_logo()
+
+uid=str(uuid.uuid4())
+true=0
+false=0
+chk=0
+error=0
+
+logo=F+ '''
+╔═════════════════════════════════════════════════════════════════╗
+║           _            __              _____ _                ║
+║     /\   | |          / _|            / ____| |               ║
+║    /  \  | | __ _ ___| |_ __ _ _ __  | |    | | __ _ ___ ___  ║
+║   / /\ \ | |/ _` / __|  _/ _` | '__| | |    | |/ _` / __/ __| ║
+║  / ____ \| | (_| \__ \ || (_| | |    | |____| | (_| \__ \__ \ ║
+║ /_/    \_\_|\__,_|___/_| \__,_|_|     \_____|_|\__,_|___/___/ ║
+║                                                               ║
+║                                                               ║
+║                                                               ║
+╚═════════════════════════════════════════════════════════════════╝
 '''
-id= input(F+'ID : '+Ca)
-tok= input(F+'Token : '+Ca)
+tok= input(X+'TOKEN TELEGRAM : '+f)
+id= input(Y+'ID TELEGRAM : '+B)
+photo_url = "https://t.me/alsafrzn/2"  
+rd = requests.get(
+    f'https://api.telegram.org/bot{tok}/sendphoto?chat_id={id}&photo={photo_url}&caption='
+    '«»«»«»«»«»«»«»«»«»«»«»«»«»«»«»«»\n'
+    '\n الاداة شغالة ✅'
+    '\n افضل اداة يوزرات بس تحتاج VPN'
+    '\n المطور الاصفر كلاس'
+    '\n يوزري {@iifffr}'
+    '\n قناتي {@viokill}'
+    '\n«»«»«»«»«»«»«»«»«»«»«»«»«»«»«»«»'
+)
+
+
 def hh():
     uk= [Z,X,F,f]
     global true,false,chk,error,uid,logo
@@ -53,9 +140,7 @@ def hh():
         col= random.choice(uk)
         col1= random.choice(uk)
         col2= random.choice(uk)
-        print(('\033[94m' + '╔' + '═' * 38 + '╗') + 
-      '\n\033[92m  • تخمط نا&ج امك •\n\033[93m  | @shlhom • | @shlhom  ' + 
-      '\n\033[94m' + '╚' + '═' * 38 + '╝')
+   
         th = time.ctime()
         v1= ''.join(random.choice('aqswedrftgyhujikopzxcvbnm')for i in range(1))
         v2 =''.join(random.choice('aqswedrftgyhujikopzxcvbnm')for i in range(1))
@@ -63,8 +148,8 @@ def hh():
         v4 = ''.join(random.choice('aqswedrftgyhujikopzxcvbnm')for i in range(1))
         v5= ''.join(random.choice('1234567890')for i in range(1))
         v6= ''.join(random.choice('1234567890')for i in range(1))
-        user1 = v1+v1+'.'+v2+v3
-        user2 = v1+'.'+v2+v3+v3
+        user1 = v1+v2+v3+v4+v5+v6+v2
+        user2 = v1+v2+v3+v4+v5+v6+v2
         usse= [user1,user2]
         user= random.choice(usse)
  
@@ -88,23 +173,24 @@ def hh():
             'username':user,
         }
         res=requests.post(url,headers=hea,data=data,proxies=None).text
-        #print(res);exit()
+        
 
         
         if '{"account_created": false, "errors": {"email": ["Another account is using the same email."]}, "status": "ok", "error_type": "email_is_taken"}'in res:
             os.system('cls'if os.name=='nt'else'clear')
             true+=1
             chk+=1
-            print(f'''{col}{logo}
-                {col}<<{col1}TO-{col2}IN-{col}US-{col1}V1>>
+            print(f'''{z}​ ╔═════ ≪ °❈° ≫ ═════╗
+​جـمـيـع الـحـقـوق لـدى الأصـفـر كـلاس
+​╚═════ ≪ °❈° ≫ ═════╝
   
-        {F}USER True : {Ca}[{true}]{E}USER False : {Ca}[{false}]
-                {z}RUN VPN : {F}[False]''')
+        {F}تم الصيد : {Ca}[{true}]{E}يوزر مستخدم : {Ca}[{false}]
+                {z}محظور لو لا : {E}[True]''')
             hit = f'''
 
-☆ HI NEW HIT 
-☆UserName : {user}
-☆BY : @shlhom
+صيد جديد✅👏
+اليوزر : {user}
+قناتي : (@viokill)
 
 '''
             requests.post(f'https://api.telegram.org/bot{tok}/sendMessage?chat_id={id}&text={hit}')
@@ -113,22 +199,24 @@ def hh():
             os.system('cls'if os.name=='nt'else'clear')
             error+=1
             chk+=1
-            print(f'''{col}{logo}
-                {col}<<{col1}TO-{col2}IN-{col}US-{col1}V1>>
+            print(f'''{z}​ ╔═════ ≪ °❈° ≫ ═════╗
+​جـمـيـع الـحـقـوق لـدى الأصـفـر كـلاس
+​╚═════ ≪ °❈° ≫ ═════╝
   
-        {F}USER True : {Ca}[{true}]{E}USER False : {Ca}[{false}]
-                {z}RUN VPN : {E}[True]''')
-            
+        {F}تم الصيد : {Ca}[{true}]{E}يوزر مستخدم : {Ca}[{false}]
+                {z}محظور لو لا : {E}[True]''')
+           
         else:
             
             os.system('cls'if os.name=='nt'else'clear')
             chk+=1
             false+=1
-            print(f'''{col}{logo}
-                {col}<<{col1}TO-{col2}IN-{col}US-{col1}V1>>
+            print(f'''{z}​ ╔═════ ≪ °❈° ≫ ═════╗
+​جـمـيـع الـحـقـوق لـدى الأصـفـر كـلاس
+​╚═════ ≪ °❈° ≫ ═════╝
   
-        {F}USER True : {Ca}[{true}]{E}USER False : {Ca}[{false}]
-                {z}RUN VPN : {F}[False]''')
+        {F}تم الصيد : {Ca}[{true}]{E}يوزر مستخدم : {Ca}[{false}]
+                {z}محظور لو لا : {E}[False]''')
 threads = []
 for i in range(30):  
     t = threading.Thread(target=hh)
