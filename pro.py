@@ -40,11 +40,6 @@ import threading
 import os
 from user_agent import generate_user_agent as elia
 import time,os,random
-os.system('pip install requests')
-os.system('pip install OneClick')
-os.system('pip install user_agent')
-os.system('pip install stdiomask')
-os.system('clear')
 
 
 Ca = "\033[1;97m" #ابيض
