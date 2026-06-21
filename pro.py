@@ -14,7 +14,7 @@ def get_current_date():
    
         return datetime.date.today()
 
-expiry_date = datetime.date(2026, 6, 1)
+expiry_date = datetime.date(2026, 7, 1)
 
 
 current_date = get_current_date()
