@@ -23,7 +23,7 @@ if current_date > expiry_date:
     print("-" * 0)
     print(f" لقد انتهت صلاحية الاداة")
     print("راسل المطور لتجديد الاداة")
-    print("@iifffr")
+    print("@iipffr")
     print("-" * 0)
     exit() 
 else:
